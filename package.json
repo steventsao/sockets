@@ -1,0 +1,41 @@
+{
+  "name": "tube-viz",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tube-viz/tube-viz.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tube-viz/tube-viz/issues"
+  },
+  "homepage": "https://github.com/tube-viz/tube-viz#readme",
+  "dependencies": {
+    "@blueprintjs/core": "^1.0.1",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-0": "^6.3.13",
+    "babel-runtime": "^6.11.6",
+    "react": "^15.0.0",
+    "react-addons-css-transition-group": "^15.3.2",
+    "react-dom": "^15.0.0",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.8.0",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.0.0",
+    "rimraf": "^2.5.4",
+    "sass-loader": "^4.0.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.6",
+    "webpack": "^1.12.14",
+    "yargs": "^5.0.0"
+  }
+}
