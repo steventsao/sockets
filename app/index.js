@@ -1,8 +1,12 @@
 import React from 'react';
 import { render } from 'react-dom';
+import SearchBox from './components/SearchBox.js';
 
 let Home = () => (
-  <div>Hello from Home</div>
+  <div>
+    Hello from Home <br />
+    <SearchBox />
+  </div>
 )
 
 render(
