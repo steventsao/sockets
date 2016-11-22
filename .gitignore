@@ -1,2 +1,12 @@
+.DS_Store
 node_modules/
 dist/
+server/.idea/
+server/project/boot/
+server/project/plugins/project
+server/target/
+server/lib_managed/
+server/src_managed/
+server/test-output/
+server/*.iml
+server/.classpath_nb
