@@ -5,6 +5,7 @@ module.exports = {
     path: __dirname + '/dist',
     filename: 'bundle.js',
   },
+  watch: true,
   resolve: ['', '.tsx?', '.js'],
   module: {
     loaders: [
