@@ -4,7 +4,6 @@ import SearchBox from './components/SearchBox.js';
 
 let Home = () => (
   <div>
-    Hello from Home <br />
     <SearchBox />
   </div>
 )
