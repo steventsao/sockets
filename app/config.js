@@ -1,3 +1,3 @@
 module.exports = {
-  NAME: "TUBE-VIZ",
-}
+  NAME: 'TUBE-VIZ',
+};

@@ -1,8 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
-import SearchBox from './components/SearchBox.js';
+import SearchBox from './components/SearchBox';
 
-let Home = () => (
+const Home = () => (
   <div>
     <SearchBox />
   </div>
@@ -11,4 +11,4 @@ let Home = () => (
 render(
   <Home />,
   document.getElementById('root')
-)
+);
