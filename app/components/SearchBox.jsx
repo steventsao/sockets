@@ -5,11 +5,12 @@ class SearchBox extends Component {
   componentDidMount() {
   }
   componentDidUpdate() {
-    console.log('updating...', this);
   }
   printClick() {
-    axios.get('/channel')
-      .then(res => console.log("Answer", res));
+    axios.get('/channel', { params: { name: 'nigahiga' } })
+      .then(res => {
+        console.log("Answer", res);
+      });
   }
   render() {
     return (
@@ -24,7 +25,7 @@ class SearchBox extends Component {
             type="button"
             onClick={this.printClick}
           >
-          Search
+          Search {this.userId}
           </button>
         </span>
       </div>
