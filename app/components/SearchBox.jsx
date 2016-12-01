@@ -3,13 +3,13 @@ import axios from 'axios';
 
 class SearchBox extends Component {
   componentDidMount() {
-    console.log('mounted...', this);
   }
   componentDidUpdate() {
     console.log('updating...', this);
   }
   printClick() {
-    console.log('clicking...');
+    axios.get('/channel')
+      .then(res => console.log("Answer", res));
   }
   render() {
     return (
