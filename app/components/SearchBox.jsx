@@ -5,11 +5,13 @@ class SearchBox extends Component {
   componentDidMount() {
   }
   componentDidUpdate() {
-    console.log('updating...', this);
   }
   printClick() {
-    axios.get('/channel')
-      .then(res => console.log("Answer", res));
+    this.props.dispatch(this.props.startSearch('randomUser'))
+    axios.get('/channel', { params: { name: 'nigahiga' } })
+      .then(res => {
+        console.log("Answer", res);
+      });
   }
   render() {
     return (
@@ -22,9 +24,9 @@ class SearchBox extends Component {
           <button
             className="btn btn-default"
             type="button"
-            onClick={this.printClick}
+            onClick={this.printClick.bind(this)}
           >
-          Search
+          Search {this.userId}
           </button>
         </span>
       </div>
