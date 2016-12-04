@@ -1,8 +1,10 @@
 import React from 'react';
 import { render } from 'react-dom';
-import SearchBox from './components/SearchBox.jsx';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import * as actions from './actions/actions.js';
+import { connect, Provider } from 'react-redux';
+import createLogger from 'redux-logger';
+import HomeContainer from './containers/HomeContainer.js';
 
 const defaultState = {
   isSearching: false,
@@ -10,24 +12,25 @@ const defaultState = {
 }
 
 const mainReducer = (state = defaultState, action) => {
-  if (action.type === actions.START_SEARCH) {
-    return Object.assign({}, state, { isSearching: true });
-  } else {
-    return state;
+  switch (action.type) {
+    case (actions.START_SEARCH):
+      return Object.assign({}, state, { isSearching: true, userName: [1, 2, 3, 4, 5] });
+    case (actions.RECEIVE_VIEWS):
+      return Object.assign({}, state, { userIds: action.channelId, receivedAt: action.receivedAt });
+    default:
+      return state;
   }
 }
 
-const store = createStore(mainReducer, defaultState);
+const logger = createLogger();
+const store = createStore(mainReducer, applyMiddleware(logger));
 
-const Home = () => (
-  <div>
-    <SearchBox startSearch={actions.startSearch} dispatch={store.dispatch}/>
-  </div>
-);
 
 window.onload = () => {
   render(
-    <Home />,
+    <Provider store={store}>
+      <HomeContainer />
+    </Provider>,
     document.getElementById('root')
   );
 };

@@ -11,6 +11,7 @@ class SearchBox extends Component {
     axios.get('/channel', { params: { name: 'nigahiga' } })
       .then(res => {
         console.log("Answer", res);
+        this.props.dispatch(this.props.receiveViews(res.data.items, 1000));
       });
   }
   render() {
