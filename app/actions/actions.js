@@ -26,13 +26,20 @@ function requestViews(channelId) {
 }
 
 export const RECEIVE_VIEWS = 'RECEIVE_VIEWS';
-function receiveViews(channelId, views) {
+export function receiveViews(channelId, views) {
   return {
     type: RECEIVE_VIEWS,
     views,
     channelId,
     receivedAt: Date.now(),
   };
+}
+
+export const CLEAR_SEARCH = 'CLEAR_SEARCH';
+function clearSearch() {
+  return {
+    type: CLEAR_SEARCH,
+  }
 }
 
 export function fetchViews(channelId) {
