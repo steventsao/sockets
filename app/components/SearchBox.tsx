@@ -1,13 +1,17 @@
-import React, { Component } from 'react';
+import * as React from 'react';
+import * as Redux from 'redux';
 import axios from 'axios';
+export interface ISearchBox {
+  dispatch: Redux.Dispatch<(arg: string) => void>;
+  startSearch: (userId: string) => Redux.Action;
+  receiveViews: (views: any[], count: number) => Redux.Action;
+}
+class SearchBox extends React.Component<ISearchBox, {}> {
+  private textInput: HTMLInputElement;
+  private userId: number;
 
-class SearchBox extends Component {
-  componentDidMount() {
-  }
-  componentDidUpdate() {
-  }
   printClick() {
-    this.props.dispatch(this.props.startSearch('randomUser'))
+    this.props.dispatch(this.props.startSearch('randomUser'));
     axios.get('/channel', { params: { name: 'nigahiga' } })
       .then(res => {
         console.log("Answer", res);

@@ -8,9 +8,14 @@ module.exports = {
     filename: 'bundle.js',
   },
   watch: true,
-  resolve: ['', '.js'],
+  resolve: ['', '.js', 'tsx', 'ts', 'jsx'],
   module: {
     loaders: [
+      {
+        test: /\.tsx?$/,
+        loader: 'awesome-typescript-loader',
+        exclude: /node_modules/,
+      },
       {
         test: /\.jsx$/,
         exclude: /(node_modules)/,
@@ -26,11 +31,6 @@ module.exports = {
         query: {
           presets: ['es2015'],
         },
-      },
-      {
-        test: /\.tsx?$/,
-        loader: 'awesome-typescript-loader',
-        exclude: /node_modules/,
       }
     ],
   },

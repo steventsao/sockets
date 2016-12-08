@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "run-server": "nodemon server/index.js"
+    "server": "nodemon server/index.js",
+    "dev": "npm run server && webpack"
   },
   "repository": {
     "type": "git",
@@ -54,11 +55,17 @@
     "yargs": "^5.0.0"
   },
   "devDependencies": {
+    "@types/react": "^0.14.54",
+    "@types/react-dom": "^0.14.19",
+    "@types/redux": "^3.6.0",
+    "awesome-typescript-loader": "^3.0.0-beta.9",
     "eslint": "^3.11.0",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.7.1",
+    "i": "^0.3.5",
+    "npm": "^4.0.3",
     "webpack-dev-server": "^1.16.2"
   }
 }
