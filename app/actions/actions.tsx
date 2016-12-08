@@ -1,4 +1,4 @@
-import fetch from 'isomorphic-fetch';
+import * as fetch from 'isomorphic-fetch';
 import axios from 'axios';
 
 export const START_SEARCH = 'START_SEARCH';

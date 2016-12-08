@@ -3,7 +3,7 @@
   "buildOnSave": false,
   "compilerOptions": {
     "module": "commonjs",
-    "target": "es6",
+    "target": "es2017",
     "jsx": "react",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -11,7 +11,8 @@
     "removeComments": false,
     "sourceMap": false,
     "inlineSourceMap": true,
-    "noEmitHelpers": true
+    "noEmitHelpers": true,
+    "importHelpers": true
   },
   "awesomeTypescriptLoaderOptions": {
     "useBabel": true,

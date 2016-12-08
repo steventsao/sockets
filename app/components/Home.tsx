@@ -1,10 +1,16 @@
-import SearchBox from './SearchBox.tsx';
-import SearchList from './SearchList.tsx';
-import PersonComponent from './PersonComponent.tsx';
-import React, { Component } from 'react';
+import SearchBox from './SearchBox';
+import SearchList from './SearchList';
+import PersonComponent from './PersonComponent';
+import * as React from 'react';
 import * as actions from '../actions/actions.js';
+import * as Redux from 'redux';
 
-class Home extends Component {
+interface IHome {
+  dispatch: Redux.Dispatch<any>;
+  searchList: string;
+}
+
+class Home extends React.Component<IHome, {}> {
   render() {
     return (
       // Refactor Searchbox so it takes the dispatch method through connect()
