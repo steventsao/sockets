@@ -1,13 +1,15 @@
 const webpack = require('webpack');
 
 module.exports = {
-  entry: './app/index.js',
+  entry: './app/index.tsx',
   output: {
     path: __dirname + '/public',
     filename: 'bundle.js',
   },
   watch: true,
-  resolve: ['', 'webpack.js', 'tsx', 'ts','js'],
+  resolve: {
+    extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
+  },
   module: {
     loaders: [
       {

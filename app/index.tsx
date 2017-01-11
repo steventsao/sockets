@@ -9,7 +9,7 @@ import HomeContainer from './containers/HomeContainer';
 const defaultState = {
   isSearching: false,
   userIds: [],
-}
+};
 
 const mainReducer = (state = defaultState, action) => {
   switch (action.type) {
@@ -20,7 +20,7 @@ const mainReducer = (state = defaultState, action) => {
     default:
       return state;
   }
-}
+};
 
 const logger = createLogger();
 const store = createStore(mainReducer, applyMiddleware(logger));
