@@ -1,36 +1,19 @@
 const webpack = require('webpack');
 
 module.exports = {
-  context: __dirname + '/app',
-  entry: './index.jsx',
+  entry: './app/index.js',
   output: {
     path: __dirname + '/public',
     filename: 'bundle.js',
   },
   watch: true,
-  resolve: ['', '.js', 'tsx', 'ts', 'jsx'],
+  resolve: ['', 'webpack.js', 'tsx', 'ts','js'],
   module: {
     loaders: [
       {
         test: /\.tsx?$/,
+        exclude: /server/,
         loader: 'awesome-typescript-loader',
-        exclude: /node_modules/,
-      },
-      {
-        test: /\.jsx$/,
-        exclude: /(node_modules)/,
-        loader: 'babel',
-        query: {
-          presets: ['es2015', 'react'],
-        },
-      },
-      {
-        test: /\.js$/,
-        exclude: /(node_modules)/,
-        loader: 'babel',
-        query: {
-          presets: ['es2015'],
-        },
       }
     ],
   },

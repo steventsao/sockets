@@ -3,7 +3,7 @@
   "buildOnSave": false,
   "compilerOptions": {
     "module": "commonjs",
-    "target": "es2017",
+    "target": "es6",
     "jsx": "react",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -19,6 +19,9 @@
     "useCache": false,
     "emitRequireType": false
   },
+  "include": [
+    "./app/**/*"
+  ],
   "exclude": [
     "node_modules",
     "dist"
