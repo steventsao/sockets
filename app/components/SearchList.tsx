@@ -1,7 +1,10 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { map } from 'lodash';
 
-class SearchList extends Component {
+export interface ISearchList {
+  userName: string;
+}
+class SearchList extends React.Component<ISearchList, {}> {
   renderRows(userNames) {
     return map(userNames, (userName, i) => <li key={i}>{userName}</li>)
   }
@@ -10,7 +13,7 @@ class SearchList extends Component {
       <ul>
         {this.renderRows(this.props.userName)}
       </ul>
-    )
+    );
   }
 }
 

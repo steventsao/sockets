@@ -11,13 +11,17 @@
     "removeComments": false,
     "sourceMap": false,
     "inlineSourceMap": true,
-    "noEmitHelpers": true
+    "noEmitHelpers": true,
+    "importHelpers": true
   },
   "awesomeTypescriptLoaderOptions": {
     "useBabel": true,
     "useCache": false,
     "emitRequireType": false
   },
+  "include": [
+    "./app/**/*"
+  ],
   "exclude": [
     "node_modules",
     "dist"
