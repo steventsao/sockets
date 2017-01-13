@@ -3,21 +3,19 @@ import * as Redux from 'redux';
 import axios from 'axios';
 
 export interface ISearchBox {
-  dispatch: Redux.Dispatch<(arg: string) => void>;
   startSearch: (userId: string) => Redux.Action;
-  receiveViews: (views: any[], count: number) => Redux.Action;
+  receiveViews?: (views: any[], count: number) => Redux.Action;
 }
 
-class SearchBox extends React.Component<ISearchBox, {}> {
+class SearchBox extends React.Component<ISearchBox, void> {
   private textInput: HTMLInputElement;
   private userId: number;
 
   printClick() {
-    this.props.dispatch(this.props.startSearch('randomUser'));
+    this.props.startSearch('test user');
     axios.get('/channel', { params: { name: this.textInput } })
       .then(res => {
-        console.log("Answer", res);
-        this.props.dispatch(this.props.receiveViews(res.data.items, 1000));
+        this.props.receiveViews(res.data.items, 1000);
       });
   }
   render() {

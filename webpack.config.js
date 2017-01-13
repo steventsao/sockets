@@ -10,6 +10,7 @@ module.exports = {
   resolve: {
     extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
   },
+  devtool: "source-map",
   module: {
     loaders: [
       {
