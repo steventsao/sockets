@@ -50,6 +50,7 @@
     "request": "^2.79.0",
     "rimraf": "^2.5.4",
     "sass-loader": "^4.0.0",
+    "socket.io": "^1.7.2",
     "style-loader": "^0.13.1",
     "tslib": "^1.2.0",
     "tslint": "^4.0.2",
