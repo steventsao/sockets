@@ -33,12 +33,12 @@ class Home extends React.Component<IHome, {messages: string[]} > {
       messages: ["this", "is", "private"]
     };
   }
-  handleAddNumber(): void {
+  handleAddNumber(text: HTMLButtonElement): void {
+    console.log(text, " is being passed in");
     let newMessages = this.state.messages.slice();
-    console.log(this.state);
     this.setState(
       {
-        messages: [...newMessages, "hi"],
+        messages: [...newMessages],
       }
     );
   }
@@ -52,7 +52,7 @@ class Home extends React.Component<IHome, {messages: string[]} > {
     // todo investigate why this.state is empty???
     return (
       <div>
-        <SearchBox startSearch={onSearchClick} addNumber={this.handleAddNumber.bind(this)} deleteNumber={this.handleDeleteNumber.bind(this)}/>
+        <SearchBox startSearch={onSearchClick} deleteNumber={this.handleDeleteNumber.bind(this)}/>
         <SearchList userName={searchList}/>
         <Messages messages={this.state.messages}/>
       </div>

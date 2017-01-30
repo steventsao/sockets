@@ -6,7 +6,7 @@ export interface ISearchList {
 }
 class SearchList extends React.Component<ISearchList, {}> {
   renderRows(userNames) {
-    return map(userNames, (userName, i) => <li key={i}>{userName}</li>)
+    return map(userNames, (userName, i) => <li key={i}>{userName}</li>);
   }
   render() {
     return (
