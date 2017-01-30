@@ -20,7 +20,8 @@
     "emitRequireType": false
   },
   "include": [
-    "./app/**/*"
+    "./app/**/*",
+    "./type-declarations"
   ],
   "exclude": [
     "node_modules",
