@@ -39,7 +39,7 @@ export const CLEAR_SEARCH = 'CLEAR_SEARCH';
 function clearSearch() {
   return {
     type: CLEAR_SEARCH,
-  }
+  };
 }
 
 export function fetchViews(channelId) {
