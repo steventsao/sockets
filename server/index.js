@@ -8,7 +8,8 @@ const bodyParser = require('body-parser');
 const socket = require('socket.io')
 const config = require('../webpack.config.js');
 const webpack = require('webpack');
-var WebpackDevServer = require('webpack-dev-server');
+const WebpackDevServer = require('webpack-dev-server');
+const webpackDevPort = 2000;
 
 
 const app = express();
@@ -23,10 +24,11 @@ new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
   hot: true,
   historyApiFallback: true
-}).listen(2000, 'localhost', (err, result) => {
-  if (err)
+}).listen(webpackDevPort, 'localhost', (err, result) => {
+  if (err) {
     return console.log(err)
-  console.log('listening at localhost:2000')
+  }
+  console.log('listening at localhost' + webpackDevPort)
 })
 // var indexHtml = fs.readFileSync(path.resolve('index.html')).toString();
 

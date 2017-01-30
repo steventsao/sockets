@@ -35,7 +35,7 @@ class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState> {
     return (
       <div className="input-group">
         <input className="form-control"
-               placeholder="Say Somethings..."
+               placeholder="Say Something..."
                value={this.state.textInput}
                onChange={this.handleChange.bind(this)}
                ref={this.handleRef.bind(this)}/>
