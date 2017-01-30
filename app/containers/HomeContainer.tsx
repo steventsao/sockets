@@ -6,9 +6,13 @@ import SearchBox from '../components/SearchBox';
 import SearchList from '../components/SearchList';
 import Messages from '../components/Messages';
 
-interface IHome {
+interface IHomeProps {
   onSearchClick: (userId: string) => Redux.Action;
   searchList: string;
+}
+
+interface IHomeState {
+  messages: string[];
 }
 
 const mapStateToProps = (state) => {
@@ -25,7 +29,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-class Home extends React.Component<IHome, {messages: string[]} > {
+class Home extends React.Component<IHomeProps, IHomeState> {
   private messages: string[];
   constructor() {
     super();

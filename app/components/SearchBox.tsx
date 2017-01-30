@@ -3,7 +3,6 @@ import * as Redux from 'redux';
 import axios from 'axios';
 
 export interface ISearchBoxProps {
-  receiveViews?: (views: any[], count: number) => Redux.Action;
   deleteNumber: () => void;
   handleSearch: (input: string) => void;
 }
