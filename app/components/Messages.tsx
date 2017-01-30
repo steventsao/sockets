@@ -4,6 +4,7 @@ import * as Redux from 'redux';
 interface IMessagesProps {
   messages: string[];
 }
+
 class Messages extends React.Component<IMessagesProps, {}> {
   renderMessages(messages) {
     return messages.map((message, i) => (
@@ -13,6 +14,7 @@ class Messages extends React.Component<IMessagesProps, {}> {
       </li>
     ));
   }
+
   render() {
     return (
       <ul className="list-group">

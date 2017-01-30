@@ -10,6 +10,7 @@ class SearchList extends React.Component<ISearchListProps, {}> {
     return map(userNames, (userName, i) => <li key={i}>{userName}</li>);
 
   }
+
   render() {
     return (
       <ul>

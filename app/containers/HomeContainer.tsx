@@ -37,23 +37,25 @@ class Home extends React.Component<IHomeProps, IHomeState> {
       messages: [],
     };
   }
+
   handleDeleteNumber(): void {
     this.setState({
       messages: this.state.messages.slice(0, this.state.messages.length - 1),
     });
   }
+
   handleSearch(input: string) {
     this.setState({
       messages: [...this.state.messages, input],
     });
   }
+
   render() {
-    const { onSearchClick, searchList } = this.props;
     return (
       <div>
         <SearchBox deleteNumber={this.handleDeleteNumber.bind(this)}
                    handleSearch={this.handleSearch.bind(this)}/>
-        <SearchList userName={searchList}/>
+        <SearchList userName={this.props.searchList}/>
         <Messages messages={this.state.messages}/>
       </div>
     );
