@@ -3,10 +3,10 @@ import * as Redux from 'redux';
 import axios from 'axios';
 
 export interface ISearchBoxProps {
-  receiveViews?: (views: any[], count: number) => Redux.Action;
   deleteNumber: () => void;
   handleSearch: (input: string) => void;
 }
+
 export interface ISearchBoxState {
   textInput: string;
 }
@@ -19,18 +19,24 @@ class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState> {
       textInput: "",
     };
   }
+
   handleRef(element) {
     this.textInput = element;
   }
+
   handleSubmit(e) {
     this.props.handleSearch(this.state.textInput);
     this.setState({
-      textInput: ""
+      textInput: "",
     });
   }
+
   handleChange(e) {
-    this.setState({textInput: e.target.value});
+    this.setState({
+      textInput: e.target.value,
+    });
   }
+
   render() {
     return (
       <div className="input-group">
@@ -42,11 +48,13 @@ class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState> {
         <span className="input-group-btn">
           <button className="btn btn-default"
                   type="button"
-                  onClick={this.props.deleteNumber.bind(this)}>Delete Item</button>
+                  onClick={this.handleSubmit.bind(this)}>
+                  Add Item
+          </button>
           <button className="btn btn-default"
                   type="button"
-                  onClick={this.handleSubmit.bind(this)}>
-            Add Item
+                  onClick={this.props.deleteNumber.bind(this)}>
+                  Delete Item
           </button>
         </span>
       </div>

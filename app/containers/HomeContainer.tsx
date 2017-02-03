@@ -6,9 +6,13 @@ import SearchBox from '../components/SearchBox';
 import SearchList from '../components/SearchList';
 import Messages from '../components/Messages';
 
-interface IHome {
+interface IHomeProps {
   onSearchClick: (userId: string) => Redux.Action;
   searchList: string;
+}
+
+interface IHomeState {
+  messages: string[];
 }
 
 const mapStateToProps = (state) => {
@@ -25,7 +29,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-class Home extends React.Component<IHome, {messages: string[]} > {
+class Home extends React.Component<IHomeProps, IHomeState> {
   private messages: string[];
   constructor() {
     super();
@@ -33,23 +37,25 @@ class Home extends React.Component<IHome, {messages: string[]} > {
       messages: [],
     };
   }
+
   handleDeleteNumber(): void {
     this.setState({
       messages: this.state.messages.slice(0, this.state.messages.length - 1),
     });
   }
+
   handleSearch(input: string) {
     this.setState({
       messages: [...this.state.messages, input],
     });
   }
+
   render() {
-    const { onSearchClick, searchList } = this.props;
     return (
       <div>
         <SearchBox deleteNumber={this.handleDeleteNumber.bind(this)}
                    handleSearch={this.handleSearch.bind(this)}/>
-        <SearchList userName={searchList}/>
+        <SearchList userName={this.props.searchList}/>
         <Messages messages={this.state.messages}/>
       </div>
     );

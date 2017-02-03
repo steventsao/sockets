@@ -6,6 +6,11 @@ const path = require('path');
 const fs = require('fs');
 const bodyParser = require('body-parser');
 const socket = require('socket.io')
+const config = require('../webpack.config.js');
+const webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server');
+const webpackDevPort = 2000;
+
 
 const app = express();
 const http = require('http').Server(app);
@@ -14,6 +19,17 @@ const io = socket(http);
 app.use(bodyParser.json());
 app.use(express.static(path.resolve('public')));
 
+
+new WebpackDevServer(webpack(config), {
+  publicPath: config.output.publicPath,
+  hot: true,
+  historyApiFallback: true
+}).listen(webpackDevPort, 'localhost', (err, result) => {
+  if (err) {
+    return console.log(err)
+  }
+  console.log('listening at localhost' + webpackDevPort)
+})
 // var indexHtml = fs.readFileSync(path.resolve('index.html')).toString();
 
 var instance = axios.create({
