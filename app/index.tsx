@@ -6,6 +6,7 @@ import { connect, Provider } from 'react-redux';
 import createLogger = require('redux-logger');
 import HomeContainer from './containers/HomeContainer';
 import { AppContainer } from 'react-hot-loader';
+import './styles/styles.scss';
 
 declare var module: { hot: any };
 
@@ -51,5 +52,5 @@ if (module.hot) {
       </Provider>,
       document.getElementById('root')
     );
-  })
+  });
 }

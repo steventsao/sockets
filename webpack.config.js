@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const WebpackNotifierPlugin = require('webpack-notifier');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: [
@@ -30,6 +31,10 @@ module.exports = {
         test: /\.tsx?$/,
         exclude: /server/,
         loader: 'awesome-typescript-loader',
+      },
+      {
+        test: /\.scss$/,
+        loader: 'style!css!sass',
       }
     ],
   },
