@@ -40,7 +40,7 @@ class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState> {
   render() {
     return (
       <div className="input-group">
-        <input className="form-control"
+        <input className="form-control testing"
                placeholder="Say Something..."
                value={this.state.textInput}
                onChange={this.handleChange.bind(this)}
@@ -52,7 +52,7 @@ class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState> {
                   Add Item
           </button>
           <button className="btn btn-default"
-                  type="button"
+                  type="button round"
                   onClick={this.props.deleteNumber.bind(this)}>
                   Delete Item
           </button>

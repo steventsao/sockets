@@ -7,6 +7,7 @@ import { createStore, applyMiddleware } from 'redux';
 import * as React from 'react';
 import { render } from 'react-dom';
 import { connect, Provider } from 'react-redux';
+import './styles/styles';
 
 
 const defaultState = {
