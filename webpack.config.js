@@ -9,7 +9,7 @@ module.exports = {
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:2000',
     'webpack/hot/only-dev-server',
-    './app/index.tsx',
+    './app/index.jsx',
   ],
   output: {
     path: __dirname + '/public',
@@ -22,19 +22,28 @@ module.exports = {
   ],
   watch: true,
   resolve: {
-    extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
+    extensions: ['.webpack.js', '.web.js', '.ts', '.tsx', '.js', '.jsx', '.scss']
   },
   devtool: "source-map",
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.tsx?$/,
         exclude: /server/,
-        loader: 'awesome-typescript-loader',
+        use: ['babel-loader', 'awesome-typescript-loader'],
       },
       {
         test: /\.scss$/,
-        loader: 'style!css!sass',
+        use: ["style-loader", "css-loader", "sass-loader"], 
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.jsx?$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        query: {
+          presets: ['es2015', 'react']
+        }
       }
     ],
   },

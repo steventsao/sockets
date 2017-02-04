@@ -46,7 +46,7 @@ class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState> {
                onChange={this.handleChange.bind(this)}
                ref={this.handleRef.bind(this)}/>
         <span className="input-group-btn">
-          <button className="btn btn-default"
+          <button className="btn btn-default round"
                   type="button"
                   onClick={this.handleSubmit.bind(this)}>
                   Add Item
