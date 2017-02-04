@@ -5,24 +5,30 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: [
-    // Add the react hot loader entry point - in reality, you only want this in your dev Webpack config
-    'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:2000',
-    'webpack/hot/only-dev-server',
+    // // Add the react hot loader entry point - in reality, you only want this in your dev Webpack config
+    // 'react-hot-loader/patch',
+    // 'webpack-dev-server/client?http://localhost:2000',
+    // 'webpack/hot/only-dev-server',
     './app/index.jsx',
   ],
   output: {
-    path: __dirname + '/public',
+    path: path.resolve('public'),
     filename: 'bundle.js',
     publicPath: '/public'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new WebpackNotifierPlugin({ alwaysNotify: true }),
+    new ExtractTextPlugin("style.css"),
+    new webpack.ProvidePlugin({   
+      jQuery: 'jquery',
+      $: 'jquery',
+      jquery: 'jquery'
+    })
   ],
   watch: true,
   resolve: {
-    extensions: ['.webpack.js', '.web.js', '.ts', '.tsx', '.js', '.jsx', '.scss']
+    extensions: ['.webpack.js', '.web.js', '.ts', '.tsx', '.js', '.jsx', '.css', '.scss']
   },
   devtool: "source-map",
   module: {
@@ -34,7 +40,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: ["style-loader", "css-loader", "sass-loader"], 
+        use: ['style-loader', 'css-loader', 'sass-loader'], 
         exclude: /node_modules/,
       },
       {
@@ -44,7 +50,7 @@ module.exports = {
         query: {
           presets: ['es2015', 'react']
         }
-      }
+      },
     ],
   },
 };
