@@ -1,14 +1,13 @@
+import * as actions from './actions/actions';
+import HomeContainer from './containers/HomeContainer';
+// plugins
+import { AppContainer } from 'react-hot-loader';
+import createLogger from 'redux-logger';
+import { createStore, applyMiddleware } from 'redux';
 import * as React from 'react';
 import { render } from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
-import * as actions from './actions/actions';
 import { connect, Provider } from 'react-redux';
-import createLogger = require('redux-logger');
-import HomeContainer from './containers/HomeContainer';
-import { AppContainer } from 'react-hot-loader';
-import './styles/styles.scss';
 
-declare var module: { hot: any };
 
 const defaultState = {
   isSearching: false,
@@ -29,7 +28,6 @@ const mainReducer = (state = defaultState, action) => {
 const logger = createLogger();
 const store = createStore(mainReducer, applyMiddleware(logger));
 
-
 window.onload = () => {
   render(
     <Provider store={store}>
@@ -38,7 +36,6 @@ window.onload = () => {
     document.getElementById('root')
   );
 };
-
 
 if (module.hot) {
   module.hot.accept('./containers/HomeContainer', () => {

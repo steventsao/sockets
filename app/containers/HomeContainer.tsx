@@ -5,7 +5,9 @@ import * as actions from '../actions/actions';
 import SearchBox from '../components/SearchBox';
 import SearchList from '../components/SearchList';
 import Messages from '../components/Messages';
+let styles = require('../styles/styles.scss');
 
+console.log(styles);
 interface IHomeProps {
   onSearchClick: (userId: string) => Redux.Action;
   searchList: string;
