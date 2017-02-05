@@ -5,8 +5,7 @@ import * as actions from '../actions/actions';
 import SearchBox from '../components/SearchBox';
 import SearchList from '../components/SearchList';
 import Messages from '../components/Messages';
-import Timer from '../components/Timer';
-import UserOptions from '../components/UserOptions';
+import TimedOptions from '../components/TimedOptions';
 
 interface IHomeProps {
   onSearchClick: (userId: string) => Redux.Action;
@@ -59,8 +58,7 @@ class Home extends React.Component<IHomeProps, IHomeState> {
                    handleSearch={this.handleSearch.bind(this)}/>
         <SearchList userName={this.props.searchList}/>
         <Messages messages={this.state.messages}/>
-        <Timer />
-        <UserOptions options={[0.5, 1, 2, 3, 5]}/>
+        <TimedOptions />
       </div>
     );
   }

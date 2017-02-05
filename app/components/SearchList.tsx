@@ -8,7 +8,6 @@ export interface ISearchListProps {
 class SearchList extends React.Component<ISearchListProps, {}> {
   renderRows(userNames) {
     return map(userNames, (userName, i) => <li key={i}>{userName}</li>);
-
   }
 
   render() {

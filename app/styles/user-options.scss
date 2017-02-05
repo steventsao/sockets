@@ -1,3 +1,6 @@
 .user-options {
   font-size: 30px;
+  &.muted {
+    color: gray;
+  }
 }
