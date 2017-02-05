@@ -32,27 +32,24 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
+let initialState = {
+  messages: [],
+  showResults: false,
+  results: [],
+};
+
 class Home extends React.Component<IHomeProps, IHomeState> {
-  private messages: string[];
   constructor() {
     super();
-    this.state = {
-      messages: [],
-      showResults: false,
-      results: [],
-    };
+    this.state = initialState;
   }
 
   handleDeleteNumber(): void {
-    this.setState((s, p) => Object.assign({}, s, {
-      messages: this.state.messages.slice(0, this.state.messages.length - 1),
-    }));
+    this.setState(deleteItem);
   }
 
   handleSearch(input: string) {
-    this.setState((s, p) => Object.assign({}, s, {
-      messages: [...this.state.messages, input],
-    }));
+    this.setState(addMessage(input));
   }
 
   private handleTimeout(results: any) {
@@ -89,7 +86,7 @@ class Home extends React.Component<IHomeProps, IHomeState> {
 
 // TODO add a return type
 function showResults(results: number[]) {
-  return (s: IHomeState, p: IHomeProps) => Object.assign({}, s, {
+  return s => Object.assign({}, s, {
     showResults: true,
     results,
   });
@@ -99,6 +96,19 @@ function clearResults(s: IHomeState, p: IHomeProps): IHomeState {
   return Object.assign({}, s, {
     showResults: false,
     results: [],
+  });
+}
+
+function deleteItem(s: IHomeState, p: IHomeProps): IHomeState {
+  const ITEM_LENGTH = s.messages.length;
+  return Object.assign({}, s, {
+    messages: s.messages.slice(0, ITEM_LENGTH - 1),
+  });
+}
+
+function addMessage(message: string) {
+  return s => Object.assign({}, s, {
+    messages: [...s.messages, message],
   });
 }
 

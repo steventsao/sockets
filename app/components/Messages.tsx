@@ -4,8 +4,9 @@ import * as Redux from 'redux';
 interface IMessagesProps {
   messages: string[];
 }
+interface IMessagesState {}
 
-class Messages extends React.Component<IMessagesProps, {}> {
+class Messages extends React.Component<IMessagesProps, IMessagesState> {
   renderMessages(messages) {
     return messages.map((message, i) => (
       // todo use another type for Ids since indices can be re-ordered.

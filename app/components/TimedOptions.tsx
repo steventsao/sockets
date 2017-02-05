@@ -72,7 +72,13 @@ class VoteOptions {
 }
 
 function updateTime(seconds: number) {
-  return (s: ITimedOptionsState, p: ITimedOptionsProps) => Object.assign({}, s, { seconds });
+  return s => Object.assign({}, s, { seconds });
+}
+
+function addOption(option: number) {
+  return s => Object.assign({}, s, {
+      votes: [...s.votes, option],
+    });
 }
 
 function enableMute(s, p): ITimedOptionsState {
@@ -86,11 +92,4 @@ function getInitialState(s: ITimedOptionsState, p): ITimedOptionsState {
       votes: [],
   });
 }
-
-function addOption(option: number) {
-  return (s: ITimedOptionsState, p) => Object.assign({}, s, {
-      votes: [...s.votes, option],
-    });
-}
-
 export default TimedOptions;
