@@ -9,7 +9,6 @@ import { render } from 'react-dom';
 import { connect, Provider } from 'react-redux';
 import './styles/styles';
 
-
 const defaultState = {
   isSearching: false,
   userIds: [],
@@ -43,7 +42,6 @@ if (module.hot) {
     // If we receive a HMR request for our App container, then reload it using require (we can't do this dynamically with import)
     const NextApp = require('./containers/HomeContainer').default;
 
-    // And render it into the root element again
     render(
       <Provider store={store}>
         <NextApp />
