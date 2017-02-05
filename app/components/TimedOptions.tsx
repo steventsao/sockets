@@ -8,6 +8,7 @@ interface ITimedOptionsProps {
   onTimeout: (results: number[]) => void;
   onClear: () => void;
 }
+
 interface ITimedOptionsState {
   seconds: number;
   isMute: boolean;
@@ -17,22 +18,13 @@ interface ITimedOptionsState {
 class TimedOptions extends React.Component<ITimedOptionsProps, ITimedOptionsState> {
   constructor() {
     super();
-    this.state = {
-      seconds: VoteOptions.COUNTDOWN_TIME,
-      isMute: false,
-      votes: [],
-    };
+    this.state = getInitialState({ seconds: 0, isMute: false, votes: []}, {});
   }
 
   componentDidMount() {
     // TODO deregister timeout when seconds === 0
     const currentTime = this.state.seconds || 10;
-    this.setState((s, p) => Object.assign({}, s,
-      {
-        seconds: this.state.seconds || VoteOptions.COUNTDOWN_TIME,
-        isMute: false,
-      }
-    ));
+    this.setState(getInitialState);
 
     setInterval(() => {
       let currentTimeLeft;
@@ -41,45 +33,27 @@ class TimedOptions extends React.Component<ITimedOptionsProps, ITimedOptionsStat
       } else {
         currentTimeLeft = this.state.seconds - 1;
       }
-      this.setState(
-        Object.assign(
-          {},
-          this.state,
-          { seconds: currentTimeLeft }
-        )
-      );
+      this.setState(updateTime(currentTimeLeft));
       this.handleTimeout();
     }, 1000);
   }
 
   private handleTimeout() {
     if (!this.state.seconds) {
-      this.setState((s, p) => Object.assign({}, s, {
-        isMute: true,
-      }));
+      this.setState(enableMute);
       this.props.onTimeout(this.state.votes);
     }
   }
 
   private handleRestart() {
-    this.setState((p, s) => Object.assign({}, s, {
-      seconds: VoteOptions.COUNTDOWN_TIME,
-      isMute: false,
-      votes: [],
-    }) as ITimedOptionsState);
+    this.setState(getInitialState);
     this.props.onClear();
   }
 
   private handleSelect(num: number) {
-    this.setState(this.addMessage(num));
+    this.setState(addOption(num));
   }
 
-  private addMessage(option: number): ITimedOptionsState {
-    return Object.assign({}, this.state,
-      {
-        votes: [...this.state.votes, option],
-      });
-  }
 
   render() {
     return (
@@ -95,6 +69,28 @@ class TimedOptions extends React.Component<ITimedOptionsProps, ITimedOptionsStat
 class VoteOptions {
   public static values = [0.5, 1, 2, 3, 5];
   public static COUNTDOWN_TIME = 10;
+}
+
+function updateTime(seconds: number) {
+  return (s: ITimedOptionsState, p: ITimedOptionsProps) => Object.assign({}, s, { seconds });
+}
+
+function enableMute(s, p): ITimedOptionsState {
+  return Object.assign({}, s, { isMute: true, });
+}
+
+function getInitialState(s: ITimedOptionsState, p): ITimedOptionsState {
+  return Object.assign({}, s, {
+      seconds: VoteOptions.COUNTDOWN_TIME,
+      isMute: false,
+      votes: [],
+  });
+}
+
+function addOption(option: number) {
+  return (s: ITimedOptionsState, p) => Object.assign({}, s, {
+      votes: [...s.votes, option],
+    });
 }
 
 export default TimedOptions;
