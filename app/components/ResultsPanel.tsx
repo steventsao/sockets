@@ -4,8 +4,6 @@ import * as React from 'react';
 interface IResultsPanelProps {}
 interface IResultsPanelState {}
 
-class ResultsPanel extends React.Component<IResultsPanelProps, IResultsPanelState> {
-
-}
+class ResultsPanel extends React.Component<IResultsPanelProps, IResultsPanelState> {}
 
 export default ResultsPanel;

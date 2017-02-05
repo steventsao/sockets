@@ -4,14 +4,11 @@ interface ITimerState {}
 
 interface ITimerProps {
   seconds?: number;
+  restart?: () => void;
 }
 
 class Timer extends React.Component<ITimerProps, ITimerState> {
-    // NOTE: props are not available in constructor
-  constructor() {
-    super();
-  }
-
+  // NOTE: props are not available in constructor
   private getTimeoutDescription() {
     return "Time's up! All options are disabled.";
   }
@@ -28,6 +25,7 @@ class Timer extends React.Component<ITimerProps, ITimerState> {
       return (
         <div>
           {this.getTimeoutDescription()}
+          <button onClick={this.props.restart}>Restart</button>
         </div>
       );
     }

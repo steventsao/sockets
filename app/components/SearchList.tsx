@@ -2,18 +2,18 @@ import * as React from 'react';
 import { map } from 'lodash';
 
 export interface ISearchListProps {
-  userName: string;
+  item: string;
 }
 
 class SearchList extends React.Component<ISearchListProps, {}> {
-  renderRows(userNames) {
-    return map(userNames, (userName, i) => <li key={i}>{userName}</li>);
+  renderRows(items) {
+    return map(items, (item, i) => <li key={i}>{item}</li>);
   }
 
   render() {
     return (
       <ul>
-        {this.renderRows(this.props.userName)}
+        {this.renderRows(this.props.item)}
       </ul>
     );
   }
