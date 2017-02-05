@@ -1,5 +1,22 @@
 .user-options {
+  $width: 50px;
   font-size: 30px;
+  list-style: none;
+  li {
+    // displays items horizontally
+    float: left;
+    background-color: white;
+    width: $width;
+    margin-right: calc(#{$width} - 25px);
+    text-align: center;
+    border: solid 1px #1D3557;
+    border-radius: 4px;
+  }
+  li:hover {
+    transition: background-color 0.5s ease;
+    cursor: pointer;
+    background-color: #A8DADC;
+  }
   &.muted {
     color: gray;
   }
