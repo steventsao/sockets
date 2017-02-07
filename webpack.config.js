@@ -5,10 +5,10 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: [
-    // // Add the react hot loader entry point - in reality, you only want this in your dev Webpack config
-    // 'react-hot-loader/patch',
-    // 'webpack-dev-server/client?http://localhost:2000',
-    // 'webpack/hot/only-dev-server',
+    // Add the react hot loader entry point - in reality, you only want this in your dev Webpack config
+    'react-hot-loader/patch',
+    'webpack-dev-server/client?http://localhost:2000',
+    'webpack/hot/only-dev-server',
     './app/index.jsx',
   ],
   output: {

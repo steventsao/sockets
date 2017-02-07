@@ -11,13 +11,15 @@ export interface ISearchBoxState {
   textInput: string;
 }
 
+let initialState = {
+  textInput: "",
+};
+
 class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState> {
   private textInput: string;
   constructor() {
     super();
-    this.state = {
-      textInput: "",
-    };
+    this.state = initialState;
   }
 
   handleRef(element) {
@@ -26,12 +28,11 @@ class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState> {
 
   handleSubmit(e) {
     this.props.handleSearch(this.state.textInput);
-    this.setState({
-      textInput: "",
-    });
+    this.setState(initialState);
   }
 
   handleChange(e) {
+    //NOTE: Tried to extract state obj to a function but got error on https://fb.me/react-event-pooling 
     this.setState({
       textInput: e.target.value,
     });

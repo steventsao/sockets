@@ -1,13 +1,19 @@
 import * as React from 'react';
-import { map } from 'lodash';
 
-export interface ISearchListProps {
+interface ISearchListProps {
   item: string;
 }
 
-class SearchList extends React.Component<ISearchListProps, {}> {
+interface ISearchListState {}
+
+class SearchList extends React.Component<ISearchListProps, ISearchListState> {
   renderRows(items) {
-    return map(items, (item, i) => <li key={i}>{item}</li>);
+    return items.map((item, i) => (
+      <li key={i}>
+        {item}
+      </li>
+      )
+    );
   }
 
   render() {
