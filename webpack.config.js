@@ -19,12 +19,13 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new WebpackNotifierPlugin({ alwaysNotify: true }),
-    new ExtractTextPlugin("style.css"),
     new webpack.ProvidePlugin({   
       jQuery: 'jquery',
       $: 'jquery',
       jquery: 'jquery'
     })
+    // TODO ExtractTextPlugin is causing errors on Webpack 2: https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/210
+    // new ExtractTextPlugin("style.css"),
   ],
   watch: true,
   resolve: {
