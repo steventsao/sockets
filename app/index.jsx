@@ -8,6 +8,7 @@ import * as React from 'react';
 import { render } from 'react-dom';
 import { connect, Provider } from 'react-redux';
 import './styles/styles';
+import IO from 'socket.io-client'
 
 const defaultState = {
   isSearching: false,
@@ -29,6 +30,7 @@ const logger = createLogger();
 const store = createStore(mainReducer, applyMiddleware(logger));
 
 window.onload = () => {
+  var socket = IO();
   render(
     <Provider store={store}>
       <HomeContainer />

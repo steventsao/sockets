@@ -60,6 +60,7 @@
     "rimraf": "^2.5.4",
     "sass-loader": "^4.1.1",
     "socket.io": "^1.7.2",
+    "socket.io-client": "^1.7.2",
     "style-loader": "^0.13.1",
     "tslib": "^1.2.0",
     "tslint": "^4.0.2",
