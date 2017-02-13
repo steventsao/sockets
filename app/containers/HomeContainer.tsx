@@ -73,10 +73,9 @@ class Home extends React.Component<IHomeProps, IHomeState> {
 
   render() {
     return (
-      <div>
+      <div className="home-container">
         <SearchBox deleteNumber={this.handleDeleteNumber.bind(this)}
                    handleSearch={this.handleSearch.bind(this)}/>
-        <Messages messages={this.state.messages}/>
         <TimedOptions onTimeout={this.handleTimeout.bind(this)} onClear={this.clear.bind(this)}/>
         {this.renderResults()}
       </div>

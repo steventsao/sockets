@@ -1,7 +1,8 @@
 .user-options {
   $width: 50px;
   font-size: 30px;
-  list-style: none;
+  list-style-type: none;
+  display: flex;
   li {
     // displays items horizontally
     float: left;

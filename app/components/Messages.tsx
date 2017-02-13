@@ -10,7 +10,7 @@ class Messages extends React.Component<IMessagesProps, IMessagesState> {
   renderMessages(messages) {
     return messages.map((message, i) => (
       // todo use another type for Ids since indices can be re-ordered.
-      <li className="list-group-item" key={i}>
+      <li className="messages center" key={i}>
         {message}
       </li>
     ));
