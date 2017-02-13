@@ -2,12 +2,12 @@ import * as React from 'react';
 import * as Redux from 'redux';
 import axios from 'axios';
 
-export interface ISearchBoxProps {
+interface ISearchBoxProps {
   deleteNumber: () => void;
   handleSearch: (input: string) => void;
 }
 
-export interface ISearchBoxState {
+interface ISearchBoxState {
   textInput: string;
 }
 
@@ -32,7 +32,7 @@ class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState> {
   }
 
   handleChange(e) {
-    //NOTE: Tried to extract state obj to a function but got error on https://fb.me/react-event-pooling 
+    //NOTE: Tried to extract state obj to a function but got error on https://fb.me/react-event-pooling
     this.setState({
       textInput: e.target.value,
     });

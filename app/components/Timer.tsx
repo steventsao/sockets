@@ -18,7 +18,7 @@ class Timer extends React.Component<ITimerProps, ITimerState> {
     if (this.props.seconds) {
       return (
         <div>
-          {this.props.seconds} Seconds Leftsssssss...
+          {this.props.seconds} Seconds Left...
         </div>
       );
     } else {

@@ -1,0 +1,7 @@
+.messages {
+  list-style-type: none;
+  &.center {
+    display: table;
+    margin: 0 auto;
+  }
+}
