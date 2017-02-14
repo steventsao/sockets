@@ -1,20 +1,31 @@
 .user-options {
-  $width: 50px;
+  $width: 200px;
+  position: absolute;
+  bottom: 0;
+  margin: 0 auto;
   font-size: 30px;
   list-style-type: none;
   display: flex;
+  flex-direction: row;
+  flex-flow: row;
   li {
+    cursor: pointer;
+    height: $width;
+    width: $width;
+    font-weight: bold;
+    line-height: $width;
     // displays items horizontally
     float: left;
-    background-color: white;
+    background-color: #1D3557;
+    color: white;
     width: $width;
-    margin-right: calc(#{$width} - 25px);
+    // TODO hopefully margin can be set dynamically per item number.
+    margin-right: 20px;
     text-align: center;
-    border: solid 1px #1D3557;
     border-radius: 4px;
   }
   li:hover {
-    transition: background-color 0.5s ease;
+    transition: background-color 0.5s ease-out;
     cursor: pointer;
     background-color: #A8DADC;
   }

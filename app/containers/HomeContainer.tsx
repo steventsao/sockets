@@ -76,8 +76,8 @@ class Home extends React.Component<IHomeProps, IHomeState> {
       <div className="home-container">
         <SearchBox deleteNumber={this.handleDeleteNumber.bind(this)}
                    handleSearch={this.handleSearch.bind(this)}/>
-        <TimedOptions onTimeout={this.handleTimeout.bind(this)} onClear={this.clear.bind(this)}/>
         {this.renderResults()}
+        <TimedOptions onTimeout={this.handleTimeout.bind(this)} onClear={this.clear.bind(this)}/>
       </div>
     );
   }

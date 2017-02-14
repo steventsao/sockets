@@ -1,6 +1,10 @@
 body {
+  padding: 0;
+  margin: 0;
   background: cornsilk;
+  display: flex;
+  flex-flow: row wrap;
   .home-container {
-    display: flex;
+    // align-content: stretch;
   }
 }
