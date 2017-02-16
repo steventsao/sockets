@@ -1,4 +1,7 @@
 import { AppContainer } from 'react-hot-loader';
+import rootReducer from './rootReducer';
+import routes from './routes';
+
 import createLogger from 'redux-logger';
 import { createStore, applyMiddleware } from 'redux';
 import * as React from 'react';
@@ -6,9 +9,7 @@ import { render } from 'react-dom';
 import { connect, Provider } from 'react-redux';
 import './styles/styles';
 import IO from 'socket.io-client'
-import routes from './routes';
 import { Router, browserHistory } from 'react-router';
-import rootReducer from './rootReducer';
 
 const logger = createLogger();
 const store = createStore(rootReducer, applyMiddleware(logger));
