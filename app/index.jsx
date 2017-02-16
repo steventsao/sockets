@@ -1,6 +1,7 @@
-import * as actions from './actions/actions';
-// plugins
 import { AppContainer } from 'react-hot-loader';
+import rootReducer from './rootReducer';
+import routes from './routes';
+
 import createLogger from 'redux-logger';
 import { createStore, applyMiddleware } from 'redux';
 import * as React from 'react';
@@ -8,27 +9,10 @@ import { render } from 'react-dom';
 import { connect, Provider } from 'react-redux';
 import './styles/styles';
 import IO from 'socket.io-client'
-import routes from './routes';
 import { Router, browserHistory } from 'react-router';
 
-const defaultState = {
-  isSearching: false,
-  userIds: [],
-};
-
-const mainReducer = (state = defaultState, action) => {
-  switch (action.type) {
-    case (actions.START_SEARCH):
-      return state;
-    case (actions.RECEIVE_VIEWS):
-      return Object.assign({}, state, { userIds: action.channelId, receivedAt: action.receivedAt });
-    default:
-      return state;
-  }
-};
-
 const logger = createLogger();
-const store = createStore(mainReducer, applyMiddleware(logger));
+const store = createStore(rootReducer, applyMiddleware(logger));
 
 window.onload = () => {
   var socket = IO();

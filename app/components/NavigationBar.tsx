@@ -12,7 +12,7 @@ class NavigationBar extends React.Component<INavigationBarState, INavigationBarP
             <nav className="navbar navbar-default">
                 <div className="container-fluid">
                     <div className="navbar-header">
-                        <Link to="/" className="navbar-brand">test</Link>
+                        <Link to="/home" className="navbar-brand">Home</Link>
                     </div>
 
                 </div>
