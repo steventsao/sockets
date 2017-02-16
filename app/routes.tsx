@@ -3,11 +3,12 @@ import { Route, IndexRoute } from 'react-router';
 
 import App from './components/App';
 import HomeContainer from './containers/HomeContainer';
-import NavigationBar from './components/NavigationBar';
+import LobbyContainer from './containers/LobbyContainer';
+
 
 export default (
     <Route path="/" component={App}>
-        <IndexRoute component={HomeContainer} />
-        <Route path="test" component={NavigationBar} />
+        <IndexRoute  component={LobbyContainer} />
+        <Route path="/home" component={HomeContainer} />
     </Route>
 )

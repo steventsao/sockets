@@ -3,7 +3,6 @@ import * as Redux from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
 import SearchBox from '../components/SearchBox';
-import Messages from '../components/Messages';
 import TimedOptions from '../components/TimedOptions';
 import { sum } from 'lodash';
 
