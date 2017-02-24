@@ -26,7 +26,7 @@ class Lobby extends React.Component<ILobbyProps, ILobbyState> {
     render() {
         return (
             <div className="Lobby-container">
-                HELLO THIS IS LOBBY
+                HELLO THIS IS LOBBYs
             </div>
         );
     }
