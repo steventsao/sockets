@@ -1,0 +1,46 @@
+// thanks to http://codepen.io/yunntan/pen/quIha?editors=1100#0
+.clock-container {
+  position: relative;
+  height: 200px;
+  width: 200px;
+  .clock {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    margin: auto;;
+    .clock-frame {
+      position: absolute;
+      margin-left: auto;
+      margin-right: auto;
+      left: 0;
+      right: 0;
+      top: 30px;
+      border-radius: 50%;
+      width: 80%;
+      height: 80%;
+      border: 2px solid black;
+      .clock-needle {
+        width: 40%;
+        height: 2px;
+        background: black;
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform-origin: 100% 50%;
+      }
+      .animate {
+        animation: spin 3s linear 0s infinite;
+      }
+    }
+  }
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
