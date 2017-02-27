@@ -14,7 +14,6 @@ class NavigationBar extends React.Component<INavigationBarState, INavigationBarP
                     <div className="navbar-header">
                         <Link to="/home" className="navbar-brand">Home</Link>
                     </div>
-
                 </div>
             </nav>
         );
