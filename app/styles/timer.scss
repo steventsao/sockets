@@ -1,5 +1,7 @@
 // thanks to http://codepen.io/yunntan/pen/quIha?editors=1100#0
 .clock-container {
+  $common-thickness: 4px;
+  $base-color: white;
   position: relative;
   height: 200px;
   width: 200px;
@@ -22,11 +24,11 @@
       border-radius: 50%;
       width: 80%;
       height: 80%;
-      border: 2px solid black;
+      border: $common-thickness solid $base-color;
       .clock-needle {
         width: 40%;
-        height: 2px;
-        background: black;
+        height: $common-thickness;
+        background: $base-color;
         position: absolute;
         top: 50%;
         left: 10px;
@@ -37,6 +39,10 @@
       }
     }
   }
+}
+.clock-description {
+  color: white;
+  font-size: 20px;
 }
 @keyframes spin {
   100% {

@@ -59,7 +59,7 @@ class Home extends React.Component<IHomeProps, IHomeState> {
     if (this.state.showResults) {
       const TOTAL_SCORE = sum(this.state.results);
       const AVG_SCORE = Math.round(TOTAL_SCORE / this.state.results.length);
-      return <div>
+      return <div className="default-font">
         Final Score is: {TOTAL_SCORE} <br />
         Average estimate is: {AVG_SCORE || "0"}
       </div>;

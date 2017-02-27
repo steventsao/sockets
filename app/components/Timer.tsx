@@ -21,7 +21,7 @@ class Timer extends React.Component<ITimerProps, ITimerState> {
     } else {
       return <div>
           {this.getTimeoutDescription()}
-          <button onClick={this.props.restart}>Restart</button>
+          <button className="primary-button" onClick={this.props.restart}>Restart</button>
         </div>;
     }
   }
@@ -36,7 +36,7 @@ class Timer extends React.Component<ITimerProps, ITimerState> {
             </div>
           </div>
         </div>
-          <p>{this.renderDescription()}</p>
+          <p className="clock-description">{this.renderDescription()}</p>
       </div>
     );
   }
