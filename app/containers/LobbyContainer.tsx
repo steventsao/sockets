@@ -1,7 +1,4 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
-import Menu from '../components/Nav'
-
 
 interface ILobbyProps {
 }
