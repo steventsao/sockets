@@ -9,23 +9,9 @@ interface ILobbyProps {
 interface ILobbyState {
 }
 
-const mapStateToProps = (state) => {
-    return {
-    };
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-
-    };
-};
-let initialState = {
-}
-
 class Lobby extends React.Component<ILobbyProps, ILobbyState> {
     constructor() {
         super();
-        this.state = initialState;
     }
 
     render() {
@@ -37,4 +23,4 @@ class Lobby extends React.Component<ILobbyProps, ILobbyState> {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Lobby);
+export default (Lobby);
