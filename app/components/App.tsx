@@ -3,7 +3,6 @@ import * as Redux from 'redux';
 import { connect } from 'react-redux';
 import Menu from './Nav'
 import { action as toggleMenu } from 'redux-burger-menu';
-import BurgerIcon from 'redux-burger-menu';
 
 interface IAppProps {
     isOpen: boolean;
