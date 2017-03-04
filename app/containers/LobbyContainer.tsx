@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import Menu from '../components/Nav'
+
 
 interface ILobbyProps {
 }
@@ -17,16 +19,19 @@ const mapDispatchToProps = (dispatch) => {
 
     };
 };
+let initialState = {
+}
 
 class Lobby extends React.Component<ILobbyProps, ILobbyState> {
     constructor() {
         super();
+        this.state = initialState;
     }
 
     render() {
         return (
             <div className="Lobby-container">
-                HELLO THIS IS LOBBYs
+                HELLO THIS IS LOBBY
             </div>
         );
     }

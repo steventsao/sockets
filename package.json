@@ -47,6 +47,7 @@
     "lodash": "^4.17.4",
     "node-sass": "^4.5.0",
     "postcss-loader": "^1.2.2",
+    "radium": "^0.18.1",
     "react": "^15.0.0",
     "react-addons-css-transition-group": "^15.3.2",
     "react-burger-menu": "^1.10.12",

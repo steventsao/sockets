@@ -1,6 +1,14 @@
 import * as fetch from 'isomorphic-fetch';
 import axios from 'axios';
 
+export const TOGGLE_MENU = 'TOGGLE_MENU';
+export function toggleMenu(isOpen = false) {
+  return {
+    type: TOGGLE_MENU,
+    payload: {isOpen}
+  };
+}
+
 export const START_SEARCH = 'START_SEARCH';
 export function startSearch(userName) {
   return {

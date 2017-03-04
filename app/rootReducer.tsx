@@ -6,4 +6,3 @@ export default combineReducers({
     searchReducer,
     burgerMenu
 });
-3
