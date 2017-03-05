@@ -1,20 +1,48 @@
 import * as React from 'react';
-import NavigationBar from './NavigationBar';
+import * as Redux from 'redux';
+import { connect } from 'react-redux';
+import Menu from './Nav'
+import { action as toggleMenu } from 'redux-burger-menu';
 
-interface IAppProp {
-    messages: string[];
+interface IAppProps {
+    isOpen: boolean;
+    onButtonClick: ()=> Redux.Action;
 }
-interface IAppState {}
+interface IAppState {
+}
 
-class App extends React.Component<IAppState, IAppProp> {
+const mapStateToProps = (state) => {
+    return {
+        isOpen: state.burgerMenu.isOpen
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onButtonClick: () =>{
+            dispatch(toggleMenu({isOpen: true}));
+        }
+    };
+};
+
+class App extends React.Component<IAppProps, IAppState> {
+    handleButtonClick(e) {
+        this.props.onButtonClick();
+    }
+    constructor() {
+        super();
+    }
     render() {
         return (
-            <div className="container">
-                <NavigationBar />
-                {this.props.children}
+            <div>
+                <button onClick={this.handleButtonClick.bind(this)}>OPEN</button>
+                <Menu isOpen={this.props.isOpen}></Menu>
+                <div id="page-wrap">
+                    {this.props.children}
+                </div>
             </div>
         );
     }
 }
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -1,22 +1,10 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
 
 interface ILobbyProps {
 }
 
 interface ILobbyState {
 }
-
-const mapStateToProps = (state) => {
-    return {
-    };
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-
-    };
-};
 
 class Lobby extends React.Component<ILobbyProps, ILobbyState> {
     constructor() {
@@ -32,4 +20,4 @@ class Lobby extends React.Component<ILobbyProps, ILobbyState> {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Lobby);
+export default (Lobby);
