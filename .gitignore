@@ -14,3 +14,4 @@ server/test-output/
 server/*.iml
 server/.classpath_nb
 npm-debug.log
+.gitconfig
