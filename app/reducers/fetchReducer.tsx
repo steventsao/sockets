@@ -1,4 +1,12 @@
 import * as actions from '../actions/actions';
+import * as Redux from 'redux';
+
+interface IFetchReducerState {
+    fetching: boolean;
+    fetched: boolean;
+    users: any[];
+    error: any;
+}
 
 const defaultState = {
     fetching: false,
@@ -7,14 +15,12 @@ const defaultState = {
     error: null
 };
 
-export default (state = defaultState, action) => {
+export default (state: IFetchReducerState = defaultState, action): IFetchReducerState => {
     switch (action.type) {
         case (actions.FETCH_USER_START):
             return state;
         case (actions.RECIEVE_USERS):
-            let newState = Object.assign({}, state)
-            newState.users = action.payload
-            return newState;
+            return Object.assign({}, state, { users: action.payload });
         case (actions.FETCH_USER_ERR):
             return state;
         default:

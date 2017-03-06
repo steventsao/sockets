@@ -31,28 +31,26 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-let initialState = {
-  messages: [],
-  showResults: false,
-  results: [],
-};
-
 class Home extends React.Component<IHomeProps, IHomeState> {
   constructor() {
     super();
-    this.state = initialState;
+    this.state = {
+      messages: [],
+      showResults: false,
+      results: [],
+    };
   }
 
   handleDeleteNumber(): void {
-    this.setState(deleteItem);
+    this.setState(HomeStates.deleteItem);
   }
 
   handleSearch(input: string) {
-    this.setState(addMessage(input));
+    this.setState(HomeStates.addMessage(input));
   }
 
   private handleTimeout(results: any) {
-    this.setState(showResults(results));
+    this.setState(HomeStates.showResults(results));
   }
 
   private renderResults() {
@@ -67,7 +65,7 @@ class Home extends React.Component<IHomeProps, IHomeState> {
   }
 
   private clear() {
-    this.setState(clearResults);
+    this.setState(HomeStates.clearResults);
   }
 
   render() {
@@ -83,31 +81,33 @@ class Home extends React.Component<IHomeProps, IHomeState> {
 };
 
 // TODO add a return type
-function showResults(results: number[]) {
-  return s => Object.assign({}, s, {
-    showResults: true,
-    results,
-  });
-}
+class HomeStates {
+  static showResults(results: number[]) {
+    return s => Object.assign({}, s, {
+      showResults: true,
+      results,
+    });
+  }
 
-function clearResults(s: IHomeState, p: IHomeProps): IHomeState {
-  return Object.assign({}, s, {
-    showResults: false,
-    results: [],
-  });
-}
+  static clearResults(s: IHomeState, p: IHomeProps): IHomeState {
+    return Object.assign({}, s, {
+      showResults: false,
+      results: [],
+    });
+  }
 
-function deleteItem(s: IHomeState, p: IHomeProps): IHomeState {
-  const ITEM_LENGTH = s.messages.length;
-  return Object.assign({}, s, {
-    messages: s.messages.slice(0, ITEM_LENGTH - 1),
-  });
-}
+  static deleteItem(s: IHomeState, p: IHomeProps): IHomeState {
+    const ITEM_LENGTH = s.messages.length;
+    return Object.assign({}, s, {
+      messages: s.messages.slice(0, ITEM_LENGTH - 1),
+    });
+  }
+  static addMessage(message: string) {
+    return s => Object.assign({}, s, {
+      messages: [...s.messages, message],
+    });
+  }
 
-function addMessage(message: string) {
-  return s => Object.assign({}, s, {
-    messages: [...s.messages, message],
-  });
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

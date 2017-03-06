@@ -2,17 +2,17 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 interface ILobbyProps {
-    users: any[]
+    users: any[];
 }
 
 interface ILobbyState {
 }
 
-const mapStateToProps = (state)=> {
+const mapStateToProps = (state) => {
     return {
         users: state.fetchReducer.users
-    }
-}
+    };
+};
 
 class Lobby extends React.Component<ILobbyProps, ILobbyState> {
     constructor() {
@@ -22,7 +22,7 @@ class Lobby extends React.Component<ILobbyProps, ILobbyState> {
     render() {
         return (
             <div className="Lobby-container">
-                HELLO THIS IS LOBBY
+                Lobby
                 {this.props.users}
             </div>
         );

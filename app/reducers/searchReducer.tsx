@@ -1,11 +1,16 @@
 import * as actions from '../actions/actions';
 
+interface IDefaultState {
+    isSearching: boolean;
+    userIds: number[];
+}
+
 const defaultState = {
     isSearching: false,
     userIds: [],
 };
 
-export default (state = defaultState, action) => {
+export default (state = defaultState, action): IDefaultState => {
     switch (action.type) {
         case (actions.START_SEARCH):
             return state;
