@@ -5,22 +5,20 @@ const api = require('./api.wire.js');
 const path = require('path');
 const fs = require('fs');
 const bodyParser = require('body-parser');
-const socket = require('socket.io')
+const socket = require('socket.io');
 const config = require('../webpack.config.js');
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
-const models = require('./models')
+const userModel = require('./user');
 const webpackDevPort = 3000;
-
 
 const app = express();
 const http = require('http').Server(app);
 const io = socket(http);
-const db = require('./db')
+const db = require('./db');
 
 app.use(bodyParser.json());
 app.use(express.static(path.resolve('./')));
-
 
 new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
@@ -31,29 +29,29 @@ new WebpackDevServer(webpack(config), {
     return console.log(err)
   }
   console.log('listening at localhost' + webpackDevPort)
-})
+});
 
 db.connect(null, function(err) {
     if (err) {
-        console.log('Unable to connect to MySQL.')
+        console.log('Unable to connect to MySQL.');
         process.exit(1)
     } else {
-
-    }
-})
-
-models.createTable((err)=> {
-    if (err) {
-        console.log(err)
-        process.exit(1)
-    } else {
-        console.log('created tubeviz table');
+        console.log('Connected to database in dev env')
     }
 });
 
-models.create(6, 'TED', 'Sunnyvale', (err)=> {
+userModel.createUserTable((err)=> {
     if (err) {
-        console.log(err)
+        console.log(err);
+        process.exit(1)
+    } else {
+        console.log('created user table');
+    }
+});
+
+userModel.create('TED', 'Sunnyvale', (err)=> {
+    if (err) {
+        console.log(err);
         process.exit(1)
     } else {
         console.log('new user created');
@@ -66,11 +64,11 @@ var instance = axios.create({
 
 app.get('/', (req, res) => {
     res.sendFile('index.html');
-})
+});
 
 app.get('/test', (req, res) => {
   res.send('hi')
-})
+});
 
 app.get('/channel', (req, res) => {
   request.get(api.channel.GET + req.query.name, (err, response) => {

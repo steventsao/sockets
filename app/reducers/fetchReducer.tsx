@@ -1,5 +1,4 @@
 import * as actions from '../actions/actions';
-import * as Redux from 'redux';
 
 interface IFetchReducerState {
     fetching: boolean;
