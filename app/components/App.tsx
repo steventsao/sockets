@@ -11,12 +11,12 @@ interface IAppProps {
     onButtonClick: () => Redux.Action;
     onFetchButtonClick: () => Redux.Action;
 }
-interface IAppState {
-}
+
+interface IAppState {}
 
 const mapStateToProps = (state) => {
     return {
-        isOpen: state.burgerMenu.isOpen
+        isOpen: state.burgerMenu.isOpen,
     };
 };
 
