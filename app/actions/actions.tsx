@@ -1,6 +1,29 @@
 import * as fetch from 'isomorphic-fetch';
 import axios from 'axios';
 
+export const FETCH_USER_START = 'FETCH_USER_START';
+export function fetchUserStart() {
+  return {
+    type: FETCH_USER_START
+  };
+}
+
+export const RECIEVE_USERS = 'RECIEVE_USERS';
+export function recieveUsers(data) {
+  return {
+    type: RECIEVE_USERS,
+    payload: data
+  };
+}
+
+export const FETCH_USER_ERR = 'FETCH_USER_ERR';
+export function fetchUserErr(err) {
+  return {
+    type: FETCH_USER_ERR,
+    payload: err
+  };
+}
+
 export const START_SEARCH = 'START_SEARCH';
 export function startSearch(userName) {
   return {

@@ -3,10 +3,13 @@ import * as Redux from 'redux';
 import { connect } from 'react-redux';
 import Menu from './Nav'
 import { action as toggleMenu } from 'redux-burger-menu';
+import * as actions from '../actions/actions';
+import axios from 'axios';
 
 interface IAppProps {
     isOpen: boolean;
     onButtonClick: ()=> Redux.Action;
+    onFetchButtonClick: ()=> Redux.Action;
 }
 interface IAppState {
 }
@@ -21,6 +24,17 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onButtonClick: () =>{
             dispatch(toggleMenu({isOpen: true}));
+        },
+        onFetchButtonClick: (status)=>{
+            dispatch(actions.fetchUserStart());
+            axios.get('test')
+                .then((response)=> {
+                    console.log(response)
+                    dispatch(actions.recieveUsers(response.data));
+                })
+                .catch((err)=> {
+                    dispatch(actions.fetchUserErr(err));
+                })
         }
     };
 };
@@ -29,6 +43,9 @@ class App extends React.Component<IAppProps, IAppState> {
     handleButtonClick(e) {
         this.props.onButtonClick();
     }
+    handleFetchButtonClick(e) {
+        this.props.onFetchButtonClick();
+    }
     constructor() {
         super();
     }
@@ -36,7 +53,7 @@ class App extends React.Component<IAppProps, IAppState> {
         return (
             <div>
                 <button onClick={this.handleButtonClick.bind(this)}>OPEN</button>
-                <Menu isOpen={this.props.isOpen}></Menu>
+                <button onClick={this.handleFetchButtonClick.bind(this)}>Fetch Data</button>
                 <div id="page-wrap">
                     {this.props.children}
                 </div>

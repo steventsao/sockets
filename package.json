@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon server/index.js",
     "dev": "npm run server && webpack",
-    "start": "node server/index.js"
+    "start": "nodemon server/index.js"
   },
   "repository": {
     "type": "git",
@@ -45,6 +45,7 @@
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^3.0.0",
     "lodash": "^4.17.4",
+    "mysql": "^2.13.0",
     "node-sass": "^4.5.0",
     "postcss-loader": "^1.2.2",
     "radium": "^0.18.1",
