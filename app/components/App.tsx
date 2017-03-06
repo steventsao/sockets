@@ -25,7 +25,7 @@ const mapDispatchToProps = (dispatch) => {
         onButtonClick: () => {
             dispatch(toggleMenu({isOpen: true}));
         },
-        onFetchButtonClick: (status) => {
+        onFetchButtonClick: () => {
             dispatch(actions.fetchUserStart());
             axios.get('test')
                 .then((response) => {
@@ -52,8 +52,10 @@ class App extends React.Component<IAppProps, IAppState> {
     render() {
         return (
             <div>
-                <Menu />
-                <button onClick={this.handleButtonClick.bind(this)}>OPEN</button>
+                <button onClick={this.handleButtonClick.bind(this)}>
+                    OPEN
+                    <Menu isOpen={this.props.isOpen}></Menu>
+                </button>
                 <button onClick={this.handleFetchButtonClick.bind(this)}>Fetch Data</button>
                 <div id="page-wrap">
                     {this.props.children}
