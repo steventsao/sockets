@@ -66,6 +66,17 @@ app.get('/', (req, res) => {
     res.sendFile('index.html');
 });
 
+app.post('/user/create', (req, res) => {
+    userModel.create(req.body.username, 'Sunnyvale', (err)=> {
+        if (err) {
+            console.log(err);
+            process.exit(1)
+        } else {
+            console.log('new user created');
+        }
+    });
+});
+
 app.get('/test', (req, res) => {
   res.send('hi')
 });

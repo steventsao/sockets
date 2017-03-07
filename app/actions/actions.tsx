@@ -1,5 +1,28 @@
 import * as fetch from 'isomorphic-fetch';
-import axios from 'axios';
+
+export const CREATE_USER_START = 'CREATE_USER_START';
+export function createUserStart(username) {
+  return {
+    type: CREATE_USER_START,
+    payload: username
+  };
+}
+
+export const CREATE_USER_SUCCESS = 'CREATE_USER_START';
+export function createUserSuccess(token) {
+  return {
+    type: CREATE_USER_SUCCESS,
+    payload: token
+  };
+}
+
+export const CREATE_USER_ERR = 'CREATE_USER_START';
+export function createUserErr(err) {
+  return {
+    type: CREATE_USER_ERR,
+    payload: err
+  };
+}
 
 export const FETCH_USER_START = 'FETCH_USER_START';
 export function fetchUserStart() {
