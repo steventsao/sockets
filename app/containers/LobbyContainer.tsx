@@ -76,12 +76,19 @@ class Lobby extends React.Component<ILobbyProps, ILobbyState> {
                         <input type="password"
                                name="pass"
                                placeholder="Password" />
+<<<<<<< eaf7cadf21785876f2112137f4ecb59071953fe5
                         <button type="submit"
                                 name="login"
                                 value="Login"
                                 onClick={this.handleSubmit.bind(this)} >
                             Login
                         </button>
+=======
+                        <input type="submit"
+                               name="login"
+                               value="Login"
+                               onClick={this.handleSubmit.bind(this)} />
+>>>>>>> Simple form that can create user with just username
                     </form>
                 </div>
                 {this.props.users}
