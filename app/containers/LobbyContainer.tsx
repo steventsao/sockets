@@ -25,7 +25,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onCreateUserButtonClick: (username) => {
-            dispatch(actions.fetchUserStart());
+            dispatch(actions.createUserStart(username));
             axios.post('user/create', { username })
                 .then((response) => {
                     console.log(response);
@@ -76,10 +76,12 @@ class Lobby extends React.Component<ILobbyProps, ILobbyState> {
                         <input type="password"
                                name="pass"
                                placeholder="Password" />
-                        <input type="submit"
-                               name="login"
-                               value="Login"
-                               onClick={this.handleSubmit.bind(this)} />
+                        <button type="submit"
+                                name="login"
+                                value="Login"
+                                onClick={this.handleSubmit.bind(this)} >
+                            Login
+                        </button>
                     </form>
                 </div>
                 {this.props.users}

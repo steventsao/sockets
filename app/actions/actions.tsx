@@ -16,7 +16,7 @@ export function createUserSuccess(token) {
   };
 }
 
-export const CREATE_USER_ERR = 'CREATE_USER_START';
+export const CREATE_USER_ERR = 'CREATE_USER_ERR';
 export function createUserErr(err) {
   return {
     type: CREATE_USER_ERR,
