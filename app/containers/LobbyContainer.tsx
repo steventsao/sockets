@@ -40,7 +40,15 @@ const mapDispatchToProps = (dispatch) => {
 
 let initialState = {
     username: ''
-}
+};
+
+let setUserName = (username)=> (
+    { username }
+)
+
+let setToInitialState = (state, props)=> (
+    initialState
+)
 
 class Lobby extends React.Component<ILobbyProps, ILobbyState> {
 // <Menu  className="nav-button"
@@ -52,14 +60,12 @@ class Lobby extends React.Component<ILobbyProps, ILobbyState> {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.onCreateUserButtonClick(this.state.username)
-        this.setState(initialState);
+        this.props.onCreateUserButtonClick(this.state.username);
+        this.setState(setToInitialState);
     }
 
     handleUserInputChange(e) {
-        this.setState({
-            username: e.target.value,
-        })
+        this.setState(setUserName(e.target.value));
     }
 
     render() {

@@ -12,6 +12,10 @@ interface IAppProps {
 
 interface IAppState {}
 
+const mapStateToProps = (state) => {
+    return {};
+};
+
 const mapDispatchToProps = (dispatch) => {
     return {
         onButtonClick: () => {
@@ -57,4 +61,4 @@ class App extends React.Component<IAppProps, IAppState> {
     }
 }
 
-export default connect(mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
