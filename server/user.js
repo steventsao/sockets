@@ -3,7 +3,7 @@ var db = require('./db.js');
 exports.createUserTable = (done)=> {
     db.get().query('SHOW TABLES LIKE "user"', (err, result)=> {
         //table exist
-        if(result.length < 1) {
+        if(!result || result.length < 1) {
             db.get().query('CREATE TABLE user (id int(11) NOT NULL AUTO_INCREMENT, name varchar(50), location varchar(50), PRIMARY KEY (id))',
                 function(err, result) {
                     if (err) return done(err);

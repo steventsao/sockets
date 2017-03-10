@@ -25,11 +25,12 @@ class Nav extends React.Component<INavProp, INavState> {
 
     render() {
         return (
-            <Menu pageWrapId={"page-wrap"}
-                  width={300}>
-                <RadiumLink to="/home" id="home" className="menu-item">Home</RadiumLink>
-                <RadiumLink onClick={ this.showSettings } className="menu-item--small">Settings</RadiumLink>
-            </Menu>
+            <div>
+                <Menu width={300}>
+                    <Link to="/home" id="home" className="menu-item">Home</Link>
+                    <Link onClick={ this.showSettings } className="menu-item--small">Settings</Link>
+                </Menu>
+            </div>
         );
     }
 }

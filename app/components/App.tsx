@@ -1,13 +1,11 @@
 import * as React from 'react';
 import * as Redux from 'redux';
 import { connect } from 'react-redux';
-import Menu from './Nav';
 import { action as toggleMenu } from 'redux-burger-menu';
 import * as actions from '../actions/actions';
 import axios from 'axios';
 
 interface IAppProps {
-    isOpen: boolean;
     onButtonClick: () => Redux.Action;
     onFetchButtonClick: () => Redux.Action;
 }
@@ -15,9 +13,7 @@ interface IAppProps {
 interface IAppState {}
 
 const mapStateToProps = (state) => {
-    return {
-        isOpen: state.burgerMenu.isOpen,
-    };
+    return {};
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -52,12 +48,12 @@ class App extends React.Component<IAppProps, IAppState> {
     render() {
         return (
             <div>
-                <button onClick={this.handleButtonClick.bind(this)}>
+                <button className="nav-button"
+                        onClick={this.handleButtonClick.bind(this)}>
                     OPEN
-                    <Menu isOpen={this.props.isOpen}></Menu>
                 </button>
                 <button onClick={this.handleFetchButtonClick.bind(this)}>Fetch Data</button>
-                <div id="page-wrap">
+                <div>
                     {this.props.children}
                 </div>
             </div>
