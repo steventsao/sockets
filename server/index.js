@@ -1,5 +1,4 @@
 const express = require('express');
-const axios = require('axios');
 const request = require('request');
 const api = require('./api.wire.js');
 const path = require('path');
@@ -9,7 +8,7 @@ const socket = require('socket.io');
 const config = require('../webpack.config.js');
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
-const userModel = require('./user');
+const userRoute = require('./user/userRoute')
 const webpackDevPort = 3000;
 
 const app = express();
@@ -19,6 +18,10 @@ const db = require('./db');
 
 app.use(bodyParser.json());
 app.use(express.static(path.resolve('./')));
+
+const userRouter = express.Router();
+app.use('/api/user', userRouter);
+userRoute(userRouter);
 
 new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
@@ -40,7 +43,7 @@ db.connect(null, function(err) {
     }
 });
 
-userModel.createUserTable((err)=> {
+db.createUserTable((err)=> {
     if (err) {
         console.log(err);
         process.exit(1)
@@ -49,42 +52,8 @@ userModel.createUserTable((err)=> {
     }
 });
 
-userModel.create('TED', 'Sunnyvale', (err)=> {
-    if (err) {
-        console.log(err);
-        process.exit(1)
-    } else {
-        console.log('new user created');
-    }
-});
-
-var instance = axios.create({
-  baseURL: api.channel.GET
-});
-
 app.get('/', (req, res) => {
     res.sendFile('index.html');
-});
-
-app.post('/user/create', (req, res) => {
-    userModel.create(req.body.username, 'Sunnyvale', (err)=> {
-        if (err) {
-            console.log(err);
-            process.exit(1)
-        } else {
-            console.log('new user created');
-        }
-    });
-});
-
-app.get('/test', (req, res) => {
-  res.send('hi')
-});
-
-app.get('/channel', (req, res) => {
-  request.get(api.channel.GET + req.query.name, (err, response) => {
-    res.send(response.body);
-  });
 });
 
 io.on('connection', (socket) => {

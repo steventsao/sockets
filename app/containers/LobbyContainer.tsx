@@ -26,7 +26,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onCreateUserButtonClick: (username) => {
             dispatch(actions.createUserStart(username));
-            axios.post('user/create', { username })
+            axios.post('api/user/create', { username })
                 .then((response) => {
                     console.log(response);
                     dispatch(actions.createUserSuccess(response.data));

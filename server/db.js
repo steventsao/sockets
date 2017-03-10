@@ -9,6 +9,10 @@ var state = {
     mode: null,
 };
 
+exports.get = function() {
+    return state.pool
+};
+
 exports.connect = function(mode, done) {
     state.pool = mysql.createPool({
         host: 'localhost',
@@ -19,10 +23,6 @@ exports.connect = function(mode, done) {
 
     state.mode = mode;
     done()
-};
-
-exports.get = function() {
-    return state.pool
 };
 
 exports.fixtures = function(data) {
@@ -47,4 +47,20 @@ exports.drop = function(tables, done) {
     async.each(tables, function(name, cb) {
         pool.query('DELETE * FROM ' + name, cb)
     }, done)
+};
+
+exports.createUserTable = (done)=> {
+    var pool = state.pool;
+    if (!pool) return done(new Error('Missing database connection.'));
+    
+    pool.query('SHOW TABLES LIKE "user"', (err, result)=> {
+        //table exist
+        if(!result || result.length < 1) {
+            pool.query('CREATE TABLE user (id int(11) NOT NULL AUTO_INCREMENT, name varchar(50), location varchar(50), PRIMARY KEY (id))',
+                function(err, result) {
+                    if (err) return done(err);
+                    done(null, result.insertId)
+                })
+        }
+    })
 };
