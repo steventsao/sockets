@@ -1,34 +1,22 @@
 const userModel = require('./userModeL');
 
 module.exports.createUser = (req, res)=> {
-    userModel.createUser(req.body.username, 'Sunnyvale', (err)=> {
-        if (err) {
-            console.log(err);
-            process.exit(1)
-        } else {
-            console.log('new user created');
-        }
-    });
+    userModel.createUser(req.body.username, 'Sunnyvale')
+        .then((user)=> {
+            console.log(user);
+        })
 };
 
 module.exports.getAllUsers = (req, res)=> {
-    userModel.getAllUsers((err, users)=> {
-        if (err) {
-            console.log(err);
-            process.exit(1)
-        } else {
-            console.log('users:' + users);
-        }
-    });
+    userModel.getAllUsers()
+        .then((users)=> {
+            console.log(users)
+        })
 };
 
 module.exports.getUserById = (req, res)=> {
-    userModel.getUserById(userId, (err, user)=> {
-        if(err) {
-            console.log(err);
-            process.exit(1)
-        } else {
-            console.log('newUsers:' + user)
-        }
-    })
+    userModel.getUserById(req.body.userId)
+        .then((user)=> {
+            console.log(user)
+        })
 };
