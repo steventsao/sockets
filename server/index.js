@@ -34,24 +34,6 @@ new WebpackDevServer(webpack(config), {
   console.log('listening at localhost' + webpackDevPort)
 });
 
-db.connect(null, function(err) {
-    if (err) {
-        console.log('Unable to connect to MySQL.');
-        process.exit(1)
-    } else {
-        console.log('Connected to database in dev env')
-    }
-});
-
-db.createUserTable((err)=> {
-    if (err) {
-        console.log(err);
-        process.exit(1)
-    } else {
-        console.log('created user table');
-    }
-});
-
 app.get('/', (req, res) => {
     res.sendFile('index.html');
 });

@@ -1,23 +1,27 @@
 const db = require('../db.js');
 
-exports.createUser = (name, location, done)=> {
-    var values = [name, location];
-    db.get().query('INSERT INTO user (name, location) VALUES(?, ?)', values, (err, result)=> {
-        if (err) return done(err);
-        done(null, result.insertId)
+exports.createUser = (username, location)=> {
+    return db.User.create({ username, location })
+        .then((user)=> {
+            return user;
+        })
+};
+
+exports.getAllUsers = ()=> {
+    return db.User.findAll({
+        attributes: ['username', 'id']
+    }).then((users)=> {
+        return users;
     })
 };
 
-exports.getAllUsers = (done)=> {
-    db.get().query('SELECT * FROM user', (err, rows)=> {
-        if (err) return done(err);
-        done(null, rows)
-    })
-};
-
-exports.getUserById = (userId, done)=> {
-    db.get().query('SELECT * FROM user WHERE id = ?', userId, (err, rows)=> {
-        if (err) return done(err);
-        done(null, rows)
+exports.getUserById = (userId)=> {
+    return db.User.findOne({
+        where: {
+            id: userId
+        },
+        attributes: ['username', 'id']
+    }).then((user)=> {
+        return user.dataValues;
     })
 };
