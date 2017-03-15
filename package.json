@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm -rf node_modules",
     "server": "nodemon server/index.js",
     "dev": "npm run server && webpack",
     "start": "nodemon server/index.js",
